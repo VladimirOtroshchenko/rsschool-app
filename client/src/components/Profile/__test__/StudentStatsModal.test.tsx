@@ -1,6 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
+import { render } from '@testing-library/react';
 import StudentStatsModal from '../StudentStatsModal';
 
 describe('StudentStatsModal', () => {
@@ -51,9 +50,9 @@ describe('StudentStatsModal', () => {
       ],
     };
 
-    const output = shallow(
+    const output = render(
       <StudentStatsModal stats={stats} courseProgress={71} scoredTasks={4} isVisible={true} onHide={jest.fn()} />,
     );
-    expect(shallowToJson(output)).toMatchSnapshot();
+    expect(output.container).toMatchSnapshot();
   });
 });
